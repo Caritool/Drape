@@ -1,0 +1,594 @@
+/* ═══════════════════════════════════════════
+   DRAPÉ — La Boutique del Signo
+   Estética: Grandma / Beatrix Potter / Jill Barklem
+   ═══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Playfair+Display+SC:wght@400;700;900&display=swap');
+
+/* ─── Variables ─── */
+:root {
+  --cream:  #F4EFE6;
+  --sage:   #9FAF8F;
+  --rose:   #D9A8A6;
+  --gold:   #F3D98C;
+  --brown:  #6B4F3A;
+  --brown-light: #8B6F56;
+  --text:   #4A3728;
+  --white:  #FFFDF9;
+
+  --ff-display: 'Playfair Display SC', serif;
+  --ff-body:    'Playfair Display', serif;
+
+  --header-h: 56px;
+}
+
+/* ─── Reset ─── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--ff-body);
+  color: var(--text);
+  background: var(--cream);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul { list-style: none; }
+
+/* ═══════════════════════════════════════════
+   NAVBAR STICKY
+   ═══════════════════════════════════════════ */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cream);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.main-header.scrolled {
+  border-bottom-color: var(--rose);
+  box-shadow: 0 2px 12px rgba(107, 79, 58, 0.08);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.logo {
+  font-family: var(--ff-display);
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--brown);
+}
+
+.nav-list {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.nav-link {
+  font-family: var(--ff-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--brown-light);
+  position: relative;
+  padding: 0.2em 0;
+  transition: color 0.25s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--brown);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.shop-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--rose);
+  transition: color 0.25s;
+}
+
+.shop-btn:hover {
+  color: var(--brown);
+}
+
+/* ═══════════════════════════════════════════
+   SCROLL CONTAINER
+   ═══════════════════════════════════════════ */
+.scroll-container {
+  scroll-snap-type: y proximity;
+}
+
+.section-v {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════ */
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.hero-image img {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.brand-title {
+  font-family: var(--ff-display);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.15;
+  color: var(--brown);
+  margin-bottom: 1.4rem;
+}
+
+.brand-title span {
+  display: block;
+}
+
+.main-quote {
+  font-style: italic;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--brown-light);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.main-quote cite {
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  font-style: normal;
+  color: var(--sage);
+}
+
+.hero-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 800px;
+  color: var(--text);
+}
+
+.hero-description em {
+  color: var(--brown);
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════
+   MARQUEE INFINITO
+   ═══════════════════════════════════════════ */
+.marquee {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
+  background: var(--rose);
+  padding: 0.65rem 0;
+  white-space: nowrap;
+}
+
+.marquee-inner {
+  display: inline-flex;
+  animation: marquee-scroll 20s linear infinite;
+}
+
+.marquee-inner span {
+  font-family: var(--ff-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  padding: 0 2rem;
+  flex-shrink: 0;
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── Prendas intro ─── */
+.section-intro {
+  text-align: center;
+  margin: 2.5rem auto 2rem;
+  max-width: 700px;
+}
+
+.description-quote {
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--brown-light);
+}
+
+.description-quote em {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+/* ─── Carrusel de prendas (scroll snap X) ─── */
+.prendas-carousel {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1rem;
+  padding: 1.5rem 0.5rem 2rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prendas-carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.prendas-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.prendas-carousel::-webkit-scrollbar-thumb {
+  background: var(--rose);
+  border-radius: 3px;
+}
+
+.item-card {
+  flex: 0 0 280px;
+  scroll-snap-align: center;
+  background: var(--white);
+  border-radius: 18px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.35s, transform 0.3s;
+  box-shadow: 0 2px 10px rgba(107, 79, 58, 0.06);
+}
+
+.item-card:hover {
+  background: var(--gold);
+  transform: translateY(-4px);
+}
+
+.card-img-wrap {
+  width: 180px;
+  height: 200px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--cream);
+}
+
+.card-img-wrap img {
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.item-card h3 {
+  font-family: var(--ff-body);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--brown);
+  margin-bottom: 0.5rem;
+}
+
+.item-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--brown-light);
+}
+
+/* ═══════════════════════════════════════════
+   SIGNO
+   ═══════════════════════════════════════════ */
+.signo-layout {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-title {
+  font-family: var(--ff-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--brown);
+  margin-bottom: 1rem;
+}
+
+.signo-intro {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+.signo-image img {
+  width: 100%;
+  max-height: 55vh;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.signo-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.signo-card {
+  background: var(--rose);
+  border-radius: 18px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.signo-card:hover {
+  transform: translateY(-4px);
+}
+
+.signo-card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.signo-card h3 {
+  font-family: var(--ff-display);
+  font-size: 1.1rem;
+  color: var(--brown);
+  margin-bottom: 0.6rem;
+}
+
+.signo-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* ═══════════════════════════════════════════
+   NOSOTROS
+   ═══════════════════════════════════════════ */
+#nosotros .section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.nosotros-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.nosotros-image img {
+  width: 260px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.nosotros-bio h3 {
+  font-family: var(--ff-display);
+  font-size: 1.4rem;
+  color: var(--brown);
+  margin-bottom: 0.6rem;
+}
+
+.nosotros-bio p {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto 0.6rem;
+}
+
+.ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--rose);
+  color: var(--brown);
+  font-family: var(--ff-body);
+  font-weight: 700;
+  padding: 0.7rem 1.8rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.ig-btn:hover {
+  background: var(--gold);
+  transform: scale(1.04);
+}
+
+/* ═══════════════════════════════════════════
+   COMPRA
+   ═══════════════════════════════════════════ */
+#compra .section-title {
+  text-align: center;
+}
+
+.compra-subtitle {
+  text-align: center;
+  font-size: 1.05rem;
+  margin: 0.8rem auto 2.5rem;
+  max-width: 600px;
+  color: var(--brown-light);
+}
+
+.compra-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.regalo-wrap {
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.regalo-wrap:hover {
+  transform: scale(1.06);
+}
+
+.regalo-img {
+  width: 220px;
+  margin: 0 auto;
+}
+
+.regalo-hint {
+  display: block;
+  margin-top: 0.6rem;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--brown-light);
+}
+
+.obtuviste-card {
+  background: var(--white);
+  border: 2px solid var(--rose);
+  border-radius: 14px;
+  padding: 2rem;
+  max-width: 320px;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.obtuviste-card.hidden {
+  display: none;
+}
+
+.obtuviste-card h3 {
+  font-family: var(--ff-display);
+  font-size: 1.3rem;
+  color: var(--brown);
+  margin-bottom: 0.5rem;
+}
+
+.obtuviste-title {
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 0.4rem;
+}
+
+.obtuviste-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.obtuviste-img {
+  width: 120px;
+  margin: 1rem auto 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-image img {
+    max-height: 50vh;
+  }
+
+  .signo-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .signo-image {
+    order: -1;
+  }
+
+  .signo-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-list {
+    gap: 1.2rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .item-card {
+    flex: 0 0 240px;
+  }
+
+  .nosotros-image img {
+    width: 200px;
+  }
+}
